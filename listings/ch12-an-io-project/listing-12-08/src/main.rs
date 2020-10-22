@@ -6,13 +6,13 @@ fn main() {
 
     let config = Config::new(&args);
 
-    println!("Searching for {}", config.query);
-    println!("In file {}", config.filename);
+    println!("搜尋 {}", config.query);
+    println!("目標檔案為 {}", config.filename);
 
     let contents = fs::read_to_string(config.filename)
-        .expect("Something went wrong reading the file");
+        .expect("讀取檔案時發生了錯誤");
 
-    println!("With text:\n{}", contents);
+    println!("文字內容：\n{}", contents);
 }
 
 struct Config {
@@ -22,12 +22,12 @@ struct Config {
 
 impl Config {
     // ANCHOR: here
-    // --snip--
+    // --省略--
     fn new(args: &[String]) -> Config {
         if args.len() < 3 {
-            panic!("not enough arguments");
+            panic!("引數不足");
         }
-        // --snip--
+        // --省略--
         // ANCHOR_END: here
 
         let query = args[1].clone();

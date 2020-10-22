@@ -1,6 +1,6 @@
 // ANCHOR: here
 use std::env;
-// --snip--
+// --省略--
 
 // ANCHOR_END: here
 use std::error::Error;
@@ -16,7 +16,7 @@ pub struct Config {
 impl Config {
     pub fn new(args: &[String]) -> Result<Config, &'static str> {
         if args.len() < 3 {
-            return Err("not enough arguments");
+            return Err("引數不足");
         }
 
         let query = args[1].clone();

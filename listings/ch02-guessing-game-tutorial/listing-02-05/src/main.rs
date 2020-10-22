@@ -3,23 +3,23 @@ use std::cmp::Ordering;
 use std::io;
 
 fn main() {
-    println!("Guess the number!");
+    println!("請猜測一個數字！");
 
     let secret_number = rand::thread_rng().gen_range(1, 101);
 
-    println!("The secret number is: {}", secret_number);
+    println!("祕密數字為：{}", secret_number);
 
     loop {
-        println!("Please input your guess.");
+        println!("請輸入你的猜測數字。");
 
         let mut guess = String::new();
 
         // ANCHOR: here
-        // --snip--
+        // --省略--
 
         io::stdin()
             .read_line(&mut guess)
-            .expect("Failed to read line");
+            .expect("讀取該行失敗");
 
         // ANCHOR: ch19
         let guess: u32 = match guess.trim().parse() {
@@ -28,16 +28,16 @@ fn main() {
         };
         // ANCHOR_END: ch19
 
-        println!("You guessed: {}", guess);
+        println!("你的猜測數字：{}", guess);
 
-        // --snip--
+        // --省略--
         // ANCHOR_END: here
 
         match guess.cmp(&secret_number) {
-            Ordering::Less => println!("Too small!"),
-            Ordering::Greater => println!("Too big!"),
+            Ordering::Less => println!("太小了！"),
+            Ordering::Greater => println!("太大了！"),
             Ordering::Equal => {
-                println!("You win!");
+                println!("獲勝！");
                 break;
             }
         }

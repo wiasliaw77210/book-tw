@@ -2,14 +2,14 @@ fn main() {
     // ANCHOR: here
     type Thunk = Box<dyn Fn() + Send + 'static>;
 
-    let f: Thunk = Box::new(|| println!("hi"));
+    let f: Thunk = Box::new(|| println!("嗨"));
 
     fn takes_long_type(f: Thunk) {
-        // --snip--
+        // --省略--
     }
 
     fn returns_long_type() -> Thunk {
-        // --snip--
+        // --省略--
         // ANCHOR_END: here
         Box::new(|| ())
         // ANCHOR: here

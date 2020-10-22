@@ -10,7 +10,7 @@ pub struct Guess {
 impl Guess {
     pub fn new(value: i32) -> Guess {
         if value < 1 || value > 100 {
-            panic!("Guess value must be between 1 and 100, got {}.", value);
+            panic!("猜測數字必須介於 1 到 100 之間，你輸入的是 {}。", value);
         }
 
         Guess { value }
@@ -23,18 +23,18 @@ impl Guess {
 // ANCHOR_END: here
 
 fn main() {
-    println!("Guess the number!");
+    println!("請猜測一個數字！");
 
     let secret_number = rand::thread_rng().gen_range(1, 101);
 
     loop {
-        println!("Please input your guess.");
+        println!("請輸入你的猜測數字。");
 
         let mut guess = String::new();
 
         io::stdin()
             .read_line(&mut guess)
-            .expect("Failed to read line");
+            .expect("讀取行數失敗");
 
         let guess: i32 = match guess.trim().parse() {
             Ok(num) => num,
@@ -44,10 +44,10 @@ fn main() {
         let guess = Guess::new(guess);
 
         match guess.value().cmp(&secret_number) {
-            Ordering::Less => println!("Too small!"),
-            Ordering::Greater => println!("Too big!"),
+            Ordering::Less => println!("太小了！"),
+            Ordering::Greater => println!("太大了！"),
             Ordering::Equal => {
-                println!("You win!");
+                println!("獲勝！");
                 break;
             }
         }

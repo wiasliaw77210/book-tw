@@ -23,7 +23,7 @@
 - [理解所有權](ch04-00-understanding-ownership.md)
     - [什麼是所有權？](ch04-01-what-is-ownership.md)
     - [引用與借用](ch04-02-references-and-borrowing.md)
-    - [Slice 型別](ch04-03-slices.md)
+    - [切片型別](ch04-03-slices.md)
 
 - [透過結構體組織相關資料](ch05-00-structs.md)
     - [定義與實例化結構體](ch05-01-defining-structs.md)
@@ -45,7 +45,7 @@
     - [將模組拆成不同檔案](ch07-05-separating-modules-into-different-files.md)
 
 - [常見集合](ch08-00-common-collections.md)
-    - [透過 Vector 儲存列表](ch08-01-vectors.md)
+    - [透過向量儲存列表](ch08-01-vectors.md)
     - [透過字串儲存 UTF-8 編碼的文字](ch08-02-strings.md)
     - [透過雜湊映射儲存鍵值配對](ch08-03-hash-maps.md)
 
@@ -56,7 +56,7 @@
 
 - [泛型型別、特徵與生命週期](ch10-00-generics.md)
     - [泛型資料型別](ch10-01-syntax.md)
-    - [特徵：定義共同行爲](ch10-02-traits.md)
+    - [特徵：定義共同行為](ch10-02-traits.md)
     - [透過生命週期驗證引用](ch10-03-lifetime-syntax.md)
 
 - [編寫自動化測試](ch11-00-testing.md)
@@ -122,7 +122,7 @@
 
 - [最終專案：建立多執行緒網頁伺服器](ch20-00-final-project-a-web-server.md)
     - [建立單一執行緒的網頁伺服器](ch20-01-single-threaded.md)
-    - [將單一執行緒伺服器轉換爲多執行緒伺服器](ch20-02-multithreaded.md)
+    - [將單一執行緒伺服器轉換為多執行緒伺服器](ch20-02-multithreaded.md)
     - [正常關機與清理](ch20-03-graceful-shutdown-and-cleanup.md)
 
 - [附錄](appendix-00.md)

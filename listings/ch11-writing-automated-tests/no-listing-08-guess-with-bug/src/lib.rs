@@ -3,11 +3,11 @@ pub struct Guess {
 }
 
 // ANCHOR: here
-// --snip--
+// --省略--
 impl Guess {
     pub fn new(value: i32) -> Guess {
         if value < 1 {
-            panic!("Guess value must be between 1 and 100, got {}.", value);
+            panic!("猜測數字必須介於 1 到 100 之間，你輸入的是 {}。", value);
         }
 
         Guess { value }

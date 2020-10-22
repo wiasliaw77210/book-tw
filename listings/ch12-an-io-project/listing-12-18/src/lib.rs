@@ -9,7 +9,7 @@ pub struct Config {
 impl Config {
     pub fn new(args: &[String]) -> Result<Config, &'static str> {
         if args.len() < 3 {
-            return Err("not enough arguments");
+            return Err("引數不足");
         }
 
         let query = args[1].clone();
@@ -29,7 +29,7 @@ pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
 pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
     for line in contents.lines() {
         if line.contains(query) {
-            // do something with line
+            // 對每行做些事情
         }
     }
 }

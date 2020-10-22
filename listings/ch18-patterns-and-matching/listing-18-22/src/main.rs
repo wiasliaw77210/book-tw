@@ -1,9 +1,9 @@
 fn main() {
     // ANCHOR: here
-    let s = Some(String::from("Hello!"));
+    let s = Some(String::from("哈囉！"));
 
     if let Some(_) = s {
-        println!("found a string");
+        println!("發現字串");
     }
 
     println!("{:?}", s);

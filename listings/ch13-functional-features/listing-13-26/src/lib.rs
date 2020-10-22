@@ -11,10 +11,10 @@ pub struct Config {
 // ANCHOR: here
 impl Config {
     pub fn new(mut args: env::Args) -> Result<Config, &'static str> {
-        // --snip--
+        // --省略--
         // ANCHOR_END: here
         if args.len() < 3 {
-            return Err("not enough arguments");
+            return Err("引數不足");
         }
 
         let query = args[1].clone();

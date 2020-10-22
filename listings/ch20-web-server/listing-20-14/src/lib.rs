@@ -6,7 +6,7 @@ pub struct ThreadPool {
 }
 
 impl ThreadPool {
-    // --snip--
+    // --省略--
     // ANCHOR_END: here
     /// Create a new ThreadPool.
     ///
@@ -22,13 +22,13 @@ impl ThreadPool {
         let mut threads = Vec::with_capacity(size);
 
         for _ in 0..size {
-            // create some threads and store them in the vector
+            // 就產生些執行緒並儲存至向量
         }
 
         ThreadPool { threads }
     }
 
-    // --snip--
+    // --省略--
     // ANCHOR_END: here
 
     pub fn execute<F>(&self, f: F)

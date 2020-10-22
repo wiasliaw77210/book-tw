@@ -129,35 +129,35 @@ mod tests {
         $ cargo run
                Compiling guessing_game v0.1.0 (file:///home/you/projects/guessing_game)
                  Running `target/guessing_game`
-            Guess the number!
-            The secret number is: 61
-            Please input your guess.
+            請猜測一個數字！
+            祕密數字為：61
+            請輸入你的猜測數字。
             10
-            You guessed: 10
-            Too small!
-            Please input your guess.
+            你的猜測數字：10
+            太小了！
+            請輸入你的猜測數字。
             99
-            You guessed: 99
-            Too big!
-            Please input your guess.
+            你的猜測數字：99
+            太大了！
+            請輸入你的猜測數字。
             foo
-            Please input your guess.
+            請輸入你的猜測數字。
             61
-            You guessed: 61
-            You win!
+            你的猜測數字：61
+            獲勝！
             $ cargo run
                Compiling guessing_game v0.1.0 (file:///home/you/projects/guessing_game)
                  Running `target/debug/guessing_game`
-            Guess the number!
-            The secret number is: 7
-            Please input your guess.
+            請猜測一個數字！
+            祕密數字為：7
+            請輸入你的猜測數字。
             4
-            You guessed: 4
+            你的猜測數字：4
             $ cargo run
                  Running `target/debug/guessing_game`
-            Guess the number!
-            The secret number is: 83
-            Please input your guess.
+            請猜測一個數字！
+            祕密數字為：83
+            請輸入你的猜測數字。
             5
             $ cargo run
                Compiling guessing_game v0.1.0 (file:///home/you/projects/guessing_game)
@@ -180,22 +180,22 @@ mod tests {
             $ cargo run
                Compiling guessing_game v0.1.0 (file:///projects/guessing_game)
                  Running `target/guessing_game`
-            Guess the number!
-            The secret number is: 61
-            Please input your guess.
+            請猜測一個數字！
+            祕密數字為：61
+            請輸入你的猜測數字。
             10
-            You guessed: 10
-            Too small!
-            Please input your guess.
+            你的猜測數字：10
+            太小了！
+            請輸入你的猜測數字。
             99
-            You guessed: 99
-            Too big!
-            Please input your guess.
+            你的猜測數字：99
+            太大了！
+            請輸入你的猜測數字。
             foo
-            Please input your guess.
+            請輸入你的猜測數字。
             61
-            You guessed: 61
-            You win!
+            你的猜測數字：61
+            獲勝！
         "#;
 
         let raw_lines = string.to_string();

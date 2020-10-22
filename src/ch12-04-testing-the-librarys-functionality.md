@@ -1,6 +1,6 @@
 ## 透過測試驅動開發完善函式庫功能
 
-現在我們提取邏輯到 *src/lib.rs* 並在 src/main.rs* 留下引數收集與錯誤處理的任務，現在對程式碼中的核心功能進行測試會簡單許多。我們可以使用各種引數直接呼叫函式來檢查回傳值，而不用從命令列呼叫我們的執行檔。歡迎自行對 `Config::new` 與 `run` 函式的功能寫些測試。
+現在我們提取邏輯到 *src/lib.rs* 並在 *src/main.rs* 留下引數收集與錯誤處理的任務，現在對程式碼中的核心功能進行測試會簡單許多。我們可以使用各種引數直接呼叫函式來檢查回傳值，而不用從命令列呼叫我們的執行檔。歡迎自行對 `Config::new` 與 `run` 函式的功能寫些測試。
 
 在此段落中，我們會在 `minigrep` 程式中利用試驅動開發（Test-driven development, TDD）來新增搜尋邏輯。此程式開發技巧遵循以下步驟：
 
@@ -15,7 +15,7 @@
 
 ### 編寫失敗的測試
 
-讓我們移除 *src/lib.rs* 與 *src/main.rs* 中用來檢查程式行爲的 `println!` 陳述式，因爲我們不再需要它們了。然後在 *src/lib.rs* 中，我們加上 `tests` 模組與一個測試函式，如我們在[第十一章][ch11-anatomy]<!-- ignore -->所做的一樣。測試函式會指定我們希望 `search` 函式所能擁有的行爲，它會接收搜尋字串與一段要被搜尋的文字，然後它只回傳文字中包含該搜尋字串的行數。範例 12-15 展示了此測試，但還不能編譯。
+讓我們移除 *src/lib.rs* 與 *src/main.rs* 中用來檢查程式行為的 `println!` 陳述式，因為我們不再需要它們了。然後在 *src/lib.rs* 中，我們加上 `tests` 模組與一個測試函式，如我們在[第十一章][ch11-anatomy]<!-- ignore -->所做的一樣。測試函式會指定我們希望 `search` 函式所能擁有的行為，它會接收搜尋字串與一段要被搜尋的文字，然後它只回傳文字中包含該搜尋字串的行數。範例 12-15 展示了此測試，但還不能編譯。
 
 <span class="filename">檔案名稱：src/lib.rs</span>
 
@@ -23,11 +23,11 @@
 {{#rustdoc_include ../listings/ch12-an-io-project/listing-12-15/src/lib.rs:here}}
 ```
 
-<span class="caption">範例 12-15：建立一個我們預期 `search` 函式該有的行爲的失敗測試</span>
+<span class="caption">範例 12-15：建立一個我們預期 `search` 函式該有的行為的失敗測試</span>
 
 此測試搜尋字串 `"duct"`。而要被搜尋的文字有三行，只有一行包含 `"duct"`。我們判定 `search` 函式回傳的數值只會包含我們預期的那一行。
 
-我們還無法執行此程式並觀察其失敗，因爲測試還無法編譯，`search` 函式根本還不存在！所以現在我們要加上足夠的程式碼讓測試可以編譯並執行，而我們要加上的事 `search` 函式的定義並永遠回傳一個空的 vector，如範例 12-16 所示。然後測試應該就能編譯並失敗，因爲空 vector 並不符合包含 `"safe, fast, productive."` 此行的 vector。
+我們還無法執行此程式並觀察其失敗，因為測試還無法編譯，`search` 函式根本還不存在！所以現在我們要加上足夠的程式碼讓測試可以編譯並執行，而我們要加上的事 `search` 函式的定義並永遠回傳一個空的向量，如範例 12-16 所示。然後測試應該就能編譯並失敗，因為空向量並不符合包含 `"safe, fast, productive."` 此行的向量。
 
 <span class="filename">檔案名稱：src/lib.rs</span>
 
@@ -37,9 +37,9 @@
 
 <span class="caption">範例 12-16：定義足夠的 `search` 函式讓我們的測試能夠編譯</span>
 
-值得注意的是在 `search` 的簽名中需要定義一個顯式的生命週期 `'a`，並用於 `contents` 引數與回傳值。回想一下在[第十章][ch10-lifetimes]<!-- ignore -->中生命週期參數會連結引數生命週期與回傳值生命週期。在此例中，我們指明回傳值應包含字串 slice 且其會引用 `contents` 引數的 slices（而非引數 `query`）。
+值得注意的是在 `search` 的簽名中需要定義一個顯式的生命週期 `'a`，並用於 `contents` 引數與回傳值。回想一下在[第十章][ch10-lifetimes]<!-- ignore -->中生命週期參數會連結引數生命週期與回傳值生命週期。在此例中，我們指明回傳值應包含字串切片且其會引用 `contents` 引數的切片（而非引數 `query`）。
 
-換句話說，我們告訴 Rust `search` 函式回傳的資料會跟傳遞給 `search` 函式的引數 `contents` 資料存活的一樣久。這點很重要！被 slice 引用的資料必須有效，這樣其引用才會有效。如果編譯器假設是在建立 `query` 而非 `contents` 的字串 slice，它的安全檢查就會不正確。
+換句話說，我們告訴 Rust `search` 函式回傳的資料會跟傳遞給 `search` 函式的引數 `contents` 資料存活的一樣久。這點很重要！被切片引用的資料必須有效，這樣其引用才會有效。如果編譯器假設是在建立 `query` 而非 `contents` 的字串切片，它的安全檢查就會不正確。
 
 如果我們忘記詮釋生命週期並嘗試編譯此函式，我們會得到以下錯誤：
 
@@ -61,7 +61,7 @@ Rust 無法知道這兩個引數哪個才是我們需要的，所以我們得告
 
 ### 寫出讓測試成功的程式碼
 
-目前我們的測試會失敗，因爲我們永遠只回傳一個空 vector。要修正並實作 `search`，我們的程式需要完成以下步驟：
+目前我們的測試會失敗，因為我們永遠只回傳一個空向量。要修正並實作 `search`，我們的程式需要完成以下步驟：
 
 * 遍歷內容的每一行。
 * 檢查該行是否包含我們要搜尋的字串。
@@ -100,7 +100,7 @@ Rust 有個實用的方法能逐步處理字串的每一行，這方法就叫 `l
 
 #### 儲存符合條件的行數
 
-我們也需要有個方式能儲存包含搜尋字串的行數。爲此我們可以在 `for` 迴圈前建立一個可變 vector 然後對 vector 呼叫 `push` 方法來儲存 `line`。在 `for` 迴圈之後，我們回傳 vector，如範例 12-19 所示。
+我們也需要有個方式能儲存包含搜尋字串的行數。為此我們可以在 `for` 迴圈前建立一個可變向量然後對向量呼叫 `push` 方法來儲存 `line`。在 `for` 迴圈之後，我們回傳向量，如範例 12-19 所示。
 
 <span class="filename">檔案名稱：src/lib.rs</span>
 
@@ -152,13 +152,13 @@ Rust 有個實用的方法能逐步處理字串的每一行，這方法就叫 `l
 
 漂亮！我們建立了一個屬於自己的迷你經典工具，並學到了很多如何架構應用程式的知識。我們也學了一些檔案輸入與輸出、生命週期、測試與命令列解析。
 
-爲了讓此專案更完勝，我們會簡單介紹如何使用環境變數，以及如何印出到標準錯誤（standard error），這兩項在寫命令列程式時都很實用。
+為了讓此專案更完整，我們會簡單介紹如何使用環境變數，以及如何印出到標準錯誤（standard error），這兩項在寫命令列程式時都很實用。
 
 [validating-references-with-lifetimes]:
 ch10-03-lifetime-syntax.html#透過生命週期驗證引用
-[ch11-anatomy]: ch11-01-writing-tests.html#the-anatomy-of-a-test-function
+[ch11-anatomy]: ch11-01-writing-tests.html#測試函式剖析
 [ch10-lifetimes]: ch10-03-lifetime-syntax.html
-[ch3-iter]: ch03-05-control-flow.html#looping-through-a-collection-with-for
+[ch3-iter]: ch03-05-control-flow.html#使用-for-遍歷集合
 [ch13-iterators]: ch13-02-iterators.html
 
 > - translators: [Ngô͘ Io̍k-ūi <wusyong9104@gmail.com>]
